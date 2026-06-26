@@ -9,7 +9,7 @@ import Skill from '../models/Skill.js';
  */
 export const getProviders = async (req, res, next) => {
   try {
-    const { skill, city, area, search } = req.query;
+    const { skill, city, area, search, keyword } = req.query;
 
     // 1. Build User query for location/name search
     let userQuery = {};
@@ -48,6 +48,18 @@ export const getProviders = async (req, res, next) => {
           return res.json([]);
         }
       }
+    }
+
+    // Add keyword search parameter (searches user name and provider headline)
+    const activeKeyword = keyword || search;
+    if (activeKeyword) {
+      const keywordUsers = await User.find({ name: new RegExp(activeKeyword.trim(), 'i') }).select('_id');
+      const keywordUserIds = keywordUsers.map(u => u._id);
+
+      profileQuery['$or'] = [
+        { userId: { $in: keywordUserIds } },
+        { headline: new RegExp(activeKeyword.trim(), 'i') }
+      ];
     }
 
     const profiles = await ProviderProfile.find(profileQuery)
