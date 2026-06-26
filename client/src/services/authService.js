@@ -17,6 +17,18 @@ export const login = async (phone, password) => {
 
 export const getCurrentUser = async () => {
   const response = await api.get('/auth/me');
+  const localEdits = localStorage.getItem('user_profile_edits');
+  if (localEdits) {
+    const parsed = JSON.parse(localEdits);
+    return {
+      ...response.data,
+      ...parsed,
+      location: {
+        city: parsed.city !== undefined ? parsed.city : response.data.location?.city,
+        area: parsed.area !== undefined ? parsed.area : response.data.location?.area
+      }
+    };
+  }
   return response.data;
 };
 

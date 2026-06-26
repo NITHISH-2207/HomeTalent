@@ -16,6 +16,7 @@ import BrowseSkills from './pages/customer/BrowseSkills.jsx';
 import ProviderDetail from './pages/customer/ProviderDetail.jsx';
 import BookingHistory from './pages/customer/BookingHistory.jsx';
 import LeaveReview from './pages/customer/LeaveReview.jsx';
+import Profile from './pages/customer/Profile.jsx';
 
 // Import Provider Pages
 import Dashboard from './pages/provider/Dashboard.jsx';
@@ -76,6 +77,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <BrowseSkills />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           }
         />

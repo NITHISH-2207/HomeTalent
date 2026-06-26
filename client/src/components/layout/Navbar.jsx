@@ -59,7 +59,10 @@ export const Navbar = () => {
                   </Link>
                 </>
               )}
-              <Link to="/provider/profile" className={getLinkClass('/provider/profile')}>
+              <Link
+                to={activeMode === 'customer' ? '/profile' : '/provider/profile'}
+                className={getLinkClass(activeMode === 'customer' ? '/profile' : '/provider/profile')}
+              >
                 Profile
               </Link>
             </div>
