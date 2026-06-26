@@ -32,9 +32,6 @@ export const Navbar = () => {
             <span className="text-teal-primary text-2xl font-bold font-heading tracking-wide">
               HomeTalent
             </span>
-            <span className="hidden sm:inline-block bg-teal-light/10 text-teal-dark border border-teal-light/20 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full">
-              {activeMode === 'provider' ? '🛠 Provider Mode' : '👤 Customer Mode'}
-            </span>
           </Link>
 
           {/* Navigation Links (visible on desktop) */}
@@ -103,9 +100,9 @@ export const Navbar = () => {
               <div className="flex items-center gap-3 pl-2 border-l border-border">
                 <div className="hidden lg:flex flex-col text-right">
                   <span className="text-sm font-semibold text-textPrimary leading-tight">
-                    {user?.name?.split(' ')[0]}
+                    {user?.name}
                   </span>
-                  <span className="text-xs text-textSecondary uppercase tracking-widest font-semibold font-mono">
+                  <span className="text-[10px] text-textSecondary uppercase tracking-widest font-semibold mt-0.5">
                     {activeMode}
                   </span>
                 </div>

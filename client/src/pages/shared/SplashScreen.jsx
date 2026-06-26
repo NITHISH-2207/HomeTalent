@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 export const SplashScreen = ({
-  onFinished,
+  onComplete,
   ...props
 }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Flag this session as already having seen the splash screen
-    sessionStorage.setItem('splashSeen', 'true');
-
     // Animate loading bar progress
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -23,18 +20,18 @@ export const SplashScreen = ({
 
     // Complete splash screen after 2.5 seconds
     const timeout = setTimeout(() => {
-      onFinished();
+      if (onComplete) onComplete();
     }, 2500);
 
     return () => {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, [onFinished]);
+  }, [onComplete]);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#FAF8F5] p-6 select-none splash-fade-in"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#F8F9FA] p-6 select-none splash-fade-in"
       {...props}
     >
       <div className="flex flex-col items-center text-center gap-4 max-w-md">

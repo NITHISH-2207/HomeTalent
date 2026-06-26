@@ -15,7 +15,7 @@ export default {
         },
         sage: '#87A878',
         terracotta: '#C5705D',
-        background: '#FAF8F5',
+        background: '#F8F9FA',
         card: '#FFFFFF',
         textPrimary: '#1A1A2E',
         textSecondary: '#6B7280',

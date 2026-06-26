@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children, requireProvider = false }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5]">
+      <div className="min-h-screen flex items-center justify-center bg-[#F8F9FA]">
         <Spinner size="lg" />
       </div>
     );
@@ -49,13 +49,17 @@ const ProtectedRoute = ({ children, requireProvider = false }) => {
 };
 
 const AppContent = () => {
-  // Splash Screen Session display manager
-  const [showSplash, setShowSplash] = useState(() => {
-    return !sessionStorage.getItem('splashSeen');
-  });
+  const [showSplash, setShowSplash] = useState(
+    !sessionStorage.getItem('splashSeen')
+  );
 
   if (showSplash) {
-    return <SplashScreen onFinished={() => setShowSplash(false)} />;
+    return (
+      <SplashScreen onComplete={() => {
+        sessionStorage.setItem('splashSeen', 'true');
+        setShowSplash(false);
+      }} />
+    );
   }
 
   return (

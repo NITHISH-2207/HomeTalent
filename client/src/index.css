@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#FAF8F5] text-[#1A1A2E] font-body min-h-screen flex flex-col;
+    @apply bg-[#F8F9FA] text-[#1A1A2E] font-body min-h-screen flex flex-col;
     font-size: 16px; /* Minimum body font size 16px */
   }
 
