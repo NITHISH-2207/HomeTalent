@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FAF8F5] text-[#1A1A2E] font-body min-h-screen flex flex-col;
+    font-size: 16px; /* Minimum body font size 16px */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-[#1A1A2E] font-bold;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer utilities {
+  .tap-target-btn {
+    min-height: 48px;
+  }
+}
+
+/* Smooth fade-in transitions */
+.fade-in-enter {
+  opacity: 0;
+}
+.fade-in-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+/* Custom styles for mobile bottom navigation */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Premium Splash Screen Animations */
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wordmarkScaleUp {
+  from {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.splash-fade-in {
+  animation: splashFadeIn 600ms ease-in-out forwards;
+}
+
+.wordmark-scale-up {
+  animation: wordmarkScaleUp 600ms ease-in-out forwards;
+}
